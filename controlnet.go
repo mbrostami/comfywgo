@@ -1,4 +1,4 @@
-package main
+package comfyui
 
 func (w *Workflow) ControlNetLoader(modelName string) *Node {
 	return w.Node("ControlNetLoader").

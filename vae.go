@@ -1,4 +1,4 @@
-package main
+package comfyui
 
 func (w *Workflow) VAEDecode(latent, model *Node) *Node {
 	return w.Node("VAEDecode").
