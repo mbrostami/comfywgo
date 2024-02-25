@@ -1,4 +1,4 @@
-package comfyui
+package comfywgo
 
 func (w *Workflow) SaveImage(image *Node) *Node {
 	return w.Node("SaveImage").

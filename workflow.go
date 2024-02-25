@@ -1,4 +1,4 @@
-package comfyui
+package comfywgo
 
 import (
 	"encoding/json"

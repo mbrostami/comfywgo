@@ -5,9 +5,9 @@ Go module to build ComfyUI workflow programmatically
 
 Basic workflow looks like this:  
 ```go
-import github.com/mbrostami/ComfyUI-Go/comfyui
+import github.com/mbrostami/comfywgo
 
-w := comfyui.New()
+w := comfywgo.New()
 model := w.CheckpointLoaderSimple("checkpoint_name")
 pos := w.CLIPTextEncode(model, "positive prompt")
 neg := w.CLIPTextEncode(model, "negative prompt")
@@ -25,7 +25,7 @@ fmt.Print(w.Json())
 
 ### Create New Node
 ```go
-w := comfyui.New()
+w := comfywgo.New()
 node := w.Node("CLIPTextEncode").
     WithInput("text", text).
     WithInput("clip", clip.Output(Clip)).

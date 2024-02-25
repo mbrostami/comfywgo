@@ -1,4 +1,4 @@
-package comfyui
+package comfywgo
 
 func (w *Workflow) EmptyLatentImage(width, height, batchSize int) *Node {
 	return w.Node("EmptyLatentImage").
