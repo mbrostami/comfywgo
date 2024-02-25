@@ -1,4 +1,4 @@
-package comfyui
+package main
 
 func (w *Workflow) CheckpointLoaderSimple(modelName string) *Node {
 	return w.Node("CheckpointLoaderSimple").

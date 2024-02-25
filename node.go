@@ -1,4 +1,4 @@
-package comfyui
+package main
 
 // outputs
 const (

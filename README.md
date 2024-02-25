@@ -5,7 +5,7 @@ Go module to build ComfyUI workflow programmatically
 
 Basic workflow looks like this:  
 ```go
-import github.com/mbrostami/ComfyUI-GoWorkflowBuilder/comfyui
+import github.com/mbrostami/ComfyUI-Go/comfyui
 
 w := comfyui.New()
 model := w.CheckpointLoaderSimple("checkpoint_name")

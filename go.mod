@@ -1,3 +1,3 @@
-module github.com/mbrostami/ComfyUI-GoWorkflowBuilder
+module github.com/mbrostami/ComfyUI-Go
 
-go 1.21.0
+go 1.19.0

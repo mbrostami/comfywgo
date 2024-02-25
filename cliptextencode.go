@@ -1,4 +1,4 @@
-package comfyui
+package main
 
 func (w *Workflow) CLIPTextEncode(clip *Node, text string) *Node {
 	return w.Node("CLIPTextEncode").
