@@ -1,6 +1,10 @@
 # ComfyUI Workflow Builder
 Go module to build ComfyUI workflow programmatically 
 
+### Installation
+```go
+go get github.com/mbrostami/comfywgo
+```
 ### API Workflow
 
 Basic workflow looks like this:  
@@ -13,10 +17,19 @@ import (
 )
 func main() {
 	w := comfywgo.New()
+	
+	// checkpoint loader (3 outputs, model/clip/vae)
 	model := w.CheckpointLoaderSimple("checkpoint_name")
+	
+	// prompt (1 conditioning output, takes model's clip output as input)
 	pos := w.CLIPTextEncode(model, "positive prompt")
+	
+	// prompt (1 conditioning output, takes model's clip output as input)
 	neg := w.CLIPTextEncode(model, "negative prompt")
+	
 	emptyLatent := w.EmptyLatentImage(1024, 1024, 1)
+
+	// KSampler (1 latent output)
 	sampler := w.KSampler(
 		comfywgo.NewKSamplerParams().
 			Model(model).
@@ -24,7 +37,11 @@ func main() {
 			Negative(neg).
 			Latent(emptyLatent),
 	)
+	
+	// VAEDecode (1 output, takes ksampler latent, and model vae)
 	w.VAEDecode(sampler, model)
+	
+	// prints the whole api workflow as json
 	fmt.Print(w.Json())
 }
 
@@ -52,5 +69,4 @@ func main() {
 	fmt.Print(w.Json())
 }
 ```
-Note: You need to specify inputs and outputs of a node during creation    
-OutputName is for internal use only and it will not be used in ComfyUI   
+Note: Output names are for internal use only and will not be used in ComfyUI   
