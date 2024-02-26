@@ -72,7 +72,7 @@ func (w *Workflow) KSampler(config KSamplerParams) *Node {
 
 	for _, k := range config.Required {
 		if _, ok := config.Inputs[k]; !ok {
-			node.error(fmt.Errorf("%s is Required for %s", k, node.ClassType))
+			node.Error(fmt.Errorf("%s is Required for %s", k, node.ClassType))
 		}
 	}
 	return node

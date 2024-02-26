@@ -95,17 +95,17 @@ func (n *Node) Output(name string) []any {
 	if v, ok := n.Outputs[name]; ok {
 		return []any{n.ID.String(), v}
 	}
-	n.error(fmt.Errorf("%s output not found for %s", name, n.ClassType))
+	n.Error(fmt.Errorf("%s output not found for %s", name, n.ClassType))
 	return []any{n.ID.String(), 0} // take first output
 }
 
-func (n *Node) error(err error) {
+func (n *Node) Error(err error) {
 	n.errors = append(n.errors, err)
 }
 
 // Validate matches all the outputs
-// returns false and first error in case of missing output
-// returns true and nil, if no error found
+// returns false and first Error in case of missing output
+// returns true and nil, if no Error found
 func (w *Workflow) Validate() (bool, error) {
 	w.mu.Lock()
 	defer w.mu.Unlock()
@@ -117,9 +117,16 @@ func (w *Workflow) Validate() (bool, error) {
 	return true, nil
 }
 
-// Json outputs a valid json that can be used in ComfyUI API
+// Json returns a valid json that can be used in ComfyUI API
 func (w *Workflow) Json() ([]byte, error) {
 	w.mu.Lock()
 	defer w.mu.Unlock()
 	return json.Marshal(w.nodes)
+}
+
+// Nodes returns all the nodes
+func (w *Workflow) Nodes() map[string]*Node {
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	return w.nodes
 }
