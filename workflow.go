@@ -29,7 +29,7 @@ type Meta struct {
 type Node struct {
 	errors    []error
 	ID        ID             `json:"-"`
-	Inputs    map[string]any `json:"Inputs"`
+	Inputs    map[string]any `json:"inputs"`
 	ClassType string         `json:"class_type"`
 	Meta      Meta           `json:"_meta"`
 	Outputs   map[string]int `json:"-"`
